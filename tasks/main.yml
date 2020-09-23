@@ -1,0 +1,64 @@
+---
+# tasks file for test_web
+
+    - name: git repo
+      git:
+        repo: 'https://github.com/komarserjio/notejam.git'     
+        dest: ./django
+        
+    - name: pip install requirements
+      pip:
+        requirements: /home/master/Documents/Demo/django/django/requirements.txt        
+
+    - name: assign ENGINE
+      lineinfile: 
+        path: /home/master/Documents/Demo/django/django/notejam/notejam/settings.py
+        regexp: 'ENGINE'
+        line: "'ENGINE': 'django.db.backends.mysql',"  
+
+    - name: assign NAME
+      lineinfile:
+        path: /home/master/Documents/Demo/django/django/notejam/notejam/settings.py
+        regexp: 'NAME'
+        line: "'NAME': 'django_db',"
+
+    - name: assign USER
+      lineinfile:
+        path: /home/master/Documents/Demo/django/django/notejam/notejam/settings.py
+        regexp: 'USER'
+        line: "'USER': 'db_user',"
+
+    - name: assign PASSWORD
+      lineinfile:
+        path: /home/master/Documents/Demo/django/django/notejam/notejam/settings.py
+        regexp: 'PASSWORD'
+        line: "'PASSWORD': 'Passw0rd',"
+
+    - name: assign HOST
+      lineinfile:
+        path: /home/master/Documents/Demo/django/django/notejam/notejam/settings.py
+        regexp: 'HOST'
+        line: "'HOST': 'localhost',"
+
+    - name: assign PORT
+      lineinfile:
+        path: /home/master/Documents/Demo/django/django/notejam/notejam/settings.py
+        regexp: 'PORT'
+        line: "'PORT': '3306',"
+
+    
+#    - name: execute script
+#      script: /home/master/Documents/Demo/django/django/notejam/manage.py syncdb
+#      args:
+#        executable: python
+
+    - name: execute script
+      script: /home/master/Documents/Demo/django/django/notejam/manage.py migrate
+      args:
+        executable: python
+
+    - name: Start running the server
+      systemd:
+        name: django_web.service
+        state: started
+
