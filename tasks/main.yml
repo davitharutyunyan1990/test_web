@@ -14,7 +14,7 @@
     
     - name: pip install requirements
       pip:
-        requirements: "{{ lookup('env', 'PWD') }}"/django/django/requirements.txt        
+        requirements: "{{ lookup('env', 'PWD') }}/django/django/requirements.txt"        
 
     - name: assign ENGINE
       lineinfile: 
