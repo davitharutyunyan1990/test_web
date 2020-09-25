@@ -60,7 +60,7 @@
 
     - name: Create file django_web.service file
       copy:
-        dest: "/usr/local/bin/django_web.service"
+        dest: "/etc/systemd/system/django_web.service"
         content: |
           [Service]
           ExecStart="{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py runserver"
