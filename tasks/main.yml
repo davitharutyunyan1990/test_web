@@ -7,7 +7,7 @@
         dest: ./django
         
     - name: PWD
-      debug: /bin/pwd
+      debug:
         msg: "{{ lookup('env', 'PWD') }}"
       
   
