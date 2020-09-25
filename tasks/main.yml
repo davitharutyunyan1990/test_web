@@ -7,17 +7,14 @@
         dest: ./django
         
     - name: PWD
-      shell: /bin/pwd
-      register: result
+      debug: /bin/pwd
+        msg: "{{ lookup('env', 'PWD') }}"
       
-    - name: LS
-      shell: /bin/ls
-      register: result
-        
+  
     
     - name: pip install requirements
       pip:
-        requirements: /home/master/Documents/Demo/django/django/requirements.txt        
+        requirements: /home/ubuntu/django/django/requirements.txt        
 
     - name: assign ENGINE
       lineinfile: 
