@@ -6,6 +6,15 @@
         repo: 'https://github.com/komarserjio/notejam.git'     
         dest: ./django
         
+    - name: PWD
+      shell: /bin/pwd
+      register: result
+      
+    - name: LS
+      shell: /bin/ls
+      register: result
+        
+    
     - name: pip install requirements
       pip:
         requirements: /home/master/Documents/Demo/django/django/requirements.txt        
