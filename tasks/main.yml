@@ -48,7 +48,7 @@
 
     
     - name: execute script
-      script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py syncdb"
+      script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py syncdb --noinput"
       args:
         executable: python
 
