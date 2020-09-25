@@ -47,22 +47,26 @@
         line: "'PORT': '3306',"
 
     
-    - name: execute script
+    - name: execute syncdb
       script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py syncdb --noinput"
       args:
         executable: python
 
-    - name: execute script
+    - name: execute migrate
       script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py migrate"
       args:
         executable: python
 
-#    - name: Start running the server
-#      systemd:
-#        name: django_web.service
-#        state: started
 
-    - name: execute script
-      script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py runserver"
-      args:
-        executable: python
+    - name: Create file django_web.service file
+      copy:
+        dest: "/etc/systemd/system/django_web.service"
+        content: |
+          [Service]
+          ExecStart="{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py runserver"
+          
+    - name: Start running the server
+      systemd:
+        name: django_web.service
+        state: started
+        
