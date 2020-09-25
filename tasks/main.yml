@@ -48,12 +48,12 @@
 
     
     - name: execute script
-      script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py" syncdb
+      script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py syncdb"
       args:
         executable: python
 
     - name: execute script
-      script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py" migrate
+      script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py migrate"
       args:
         executable: python
 
@@ -63,6 +63,6 @@
 #        state: started
 
     - name: execute script
-      script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py" runserver
+      script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py runserver"
       args:
         executable: python
