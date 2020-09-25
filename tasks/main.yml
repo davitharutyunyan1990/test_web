@@ -14,7 +14,7 @@
     
     - name: pip install requirements
       pip:
-        requirements: /home/ubuntu/django/django/requirements.txt        
+        requirements: ./django/django/requirements.txt        
 
     - name: assign ENGINE
       lineinfile: 
