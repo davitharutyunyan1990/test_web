@@ -15,13 +15,14 @@
         cmd: virtualenv django_env
 
     - name: activate django_env virtual environment
-      shell: source django_env/bin/activate
+      shell: "source {{ lookup('env', 'PWD') }}/django_env/bin/activate"
       args:
         executable: /bin/bash   
           
     - name: pip install requirements
       pip:
-        requirements: "{{ lookup('env', 'PWD') }}/django/django/requirements.txt"        
+        requirements: "{{ lookup('env', 'PWD') }}/django/django/requirements.txt"  
+        virtualenv: "{{ lookup('env', 'PWD') }}/django_env"
 
     - name: assign ENGINE
       lineinfile: 
