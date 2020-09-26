@@ -18,6 +18,7 @@
 
     - name: create virtual environment django_env
       pip:
+        name: mysql-python
         virtualenv: "{{ lookup('env', 'PWD') }}/django_env"
       #command:
       #  cmd: virtualenv django_env -p python3
@@ -34,10 +35,10 @@
         requirements: "{{ lookup('env', 'PWD') }}/django/django/requirements.txt"  
         virtualenv: "{{ lookup('env', 'PWD') }}/django_env"
 
-    - name: pip install mysql-python
-      pip:
-        name: mysql-python
-        virtualenv: "{{ lookup('env', 'PWD') }}/django_env"
+    #- name: pip install mysql-python
+    #  pip:
+    #    name: mysql-python
+    #    virtualenv: "{{ lookup('env', 'PWD') }}/django_env"
 
     - name: assign ENGINE
       lineinfile: 
