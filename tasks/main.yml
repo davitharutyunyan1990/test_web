@@ -24,6 +24,11 @@
         requirements: "{{ lookup('env', 'PWD') }}/django/django/requirements.txt"  
         virtualenv: "{{ lookup('env', 'PWD') }}/django_env"
 
+    - name: pip install mysql-python
+      pip:
+        name: mysql-python
+        virtualenv: "{{ lookup('env', 'PWD') }}/django_env"
+
     - name: assign ENGINE
       lineinfile: 
         path: "{{ lookup('env', 'PWD') }}/django/django/notejam/notejam/settings.py"
@@ -78,7 +83,7 @@
         content: |
           After=network.service
           [Service]
-          ExecStart="{{ lookup('env', 'PWD')}}/django_env/bin/python2.7  {{ lookup('env', 'PWD') }}/django/django/notejam/manage.py runserver"
+          ExecStart="{{ lookup('env', 'PWD')}}/django_env/bin/python  {{ lookup('env', 'PWD') }}/django/django/notejam/manage.py runserver"
           
     - name: Start running the server
       systemd:
