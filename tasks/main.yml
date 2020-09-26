@@ -6,14 +6,10 @@
         repo: 'https://github.com/komarserjio/notejam.git'     
         dest: ./django
           
-    - name: pip install virtualenv
-      pip:
-        name: pip
-        state: latest
-        
-    - name: pip install virtualenv
-      pip:
-        name: requests[security]
+#    - name: pip install virtualenv
+#      pip:
+#        name: pip
+#        state: latest
          
     - name: pip install virtualenv
       pip:
