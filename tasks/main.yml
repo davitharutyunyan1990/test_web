@@ -75,8 +75,9 @@
       copy:
         dest: "/etc/systemd/system/django_web.service"
         content: |
+          After=network.service
           [Service]
-          ExecStart="{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py runserver"
+          ExecStart="{{ lookup('env', 'PWD')}}/django_env/bin/python2.7  {{ lookup('env', 'PWD') }}/django/django/notejam/manage.py runserver"
           
     - name: Start running the server
       systemd:
