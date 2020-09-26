@@ -8,10 +8,12 @@
           
     - name: pip install virtualenv
       pip:
-        name: 
-          - "-U pip"
-          - "virtualenv"
-     
+        name: pip
+        state: latest
+         
+    - name: pip install virtualenv
+      pip:
+        name: virtualenv
 
     - name: create virtual environment django_env
       shell:
