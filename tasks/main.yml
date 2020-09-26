@@ -6,6 +6,19 @@
         repo: 'https://github.com/komarserjio/notejam.git'     
         dest: ./django
           
+    - name: pip install virtualenv
+      pip:
+        name: virtualenv
+
+    - name: create virtual environment django_env
+      shell:
+        cmd: virtualenv django_env
+
+    - name: activate django_env virtual environment
+      shell: source django_env/bin/activate
+      args:
+        executable: /bin/bash   
+          
     - name: pip install requirements
       pip:
         requirements: "{{ lookup('env', 'PWD') }}/django/django/requirements.txt"        
