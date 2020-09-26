@@ -6,30 +6,15 @@
         repo: 'https://github.com/komarserjio/notejam.git'     
         dest: ./django
           
-#    - name: pip install virtualenv
-#      pip:
-#        name: pip
-#        state: latest
-         
     - name: pip install virtualenv
       pip:
         name: virtualenv
         state: latest
         
-    - name: pip install setuptools 42.0.0 
-      pip:
-        name: setuptools==42.0.0
-        
     - name: create virtual environment django_env
-      pip:
-        name: mysql-python
-        virtualenv: "{{ lookup('env', 'PWD') }}/django_env"
-
-        
-      #command:
-      #  cmd: virtualenv django_env -p python3
-      #shell:
-        #cmd: virtualenv django_env
+      shell:
+        cmd: virtualenv django_env
+  
 
     - name: activate django_env virtual environment
       shell: "source {{ lookup('env', 'PWD') }}/django_env/bin/activate"
@@ -41,10 +26,10 @@
         requirements: "{{ lookup('env', 'PWD') }}/django/django/requirements.txt"  
         virtualenv: "{{ lookup('env', 'PWD') }}/django_env"
 
-    #- name: pip install mysql-python
-    #  pip:
-    #    name: mysql-python
-    #    virtualenv: "{{ lookup('env', 'PWD') }}/django_env"
+    - name: pip install mysql-python
+      pip:
+        name: mysql-python
+        virtualenv: "{{ lookup('env', 'PWD') }}/django_env"
 
     - name: assign ENGINE
       lineinfile: 
@@ -84,7 +69,7 @@
 
     
     - name: execute syncdb
-      script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py syncdb --noinput"
+      script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py syncdb"
       args:
         executable: python
 
