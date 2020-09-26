@@ -14,10 +14,13 @@
     - name: pip install virtualenv
       pip:
         name: virtualenv
+        state: latest
 
     - name: create virtual environment django_env
-      command:
-        cmd: virtualenv django_env -p python3
+      pip:
+        virtualenv: "{{ lookup('env', 'PWD') }}/django_env"
+      #command:
+      #  cmd: virtualenv django_env -p python3
       #shell:
         #cmd: virtualenv django_env
 
