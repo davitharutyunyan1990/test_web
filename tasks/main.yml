@@ -79,7 +79,7 @@
         executable: python
 
 
-    - name: Create file django_web.service file
+    - name: Create django_web.service file
       copy:
         dest: "/etc/systemd/system/django_web.service"
         content: |
