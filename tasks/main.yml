@@ -8,7 +8,9 @@
           
     - name: pip install virtualenv
       pip:
-        name: virtualenv
+        name: 
+          - "virtualenv"
+          - "-U pip"
 
     - name: create virtual environment django_env
       shell:
