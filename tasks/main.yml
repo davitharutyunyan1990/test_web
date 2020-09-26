@@ -15,16 +15,16 @@
       pip:
         name: virtualenv
         state: latest
-
-    - name: create virtual environment django_env
-      pip:
-        name: mysql-python
-        virtualenv: "{{ lookup('env', 'PWD') }}/django_env"
         
     - name: pip install setuptools 42.0.0 
       pip:
         name: setuptools==42.0.0
+        
+    - name: create virtual environment django_env
+      pip:
+        name: mysql-python
         virtualenv: "{{ lookup('env', 'PWD') }}/django_env"
+
         
       #command:
       #  cmd: virtualenv django_env -p python3
