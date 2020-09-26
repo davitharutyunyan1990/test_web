@@ -16,8 +16,10 @@
         name: virtualenv
 
     - name: create virtual environment django_env
-      shell:
-        cmd: virtualenv django_env
+      command:
+        cmd: virtualenv django_env -p python3
+      #shell:
+        #cmd: virtualenv django_env
 
     - name: activate django_env virtual environment
       shell: "source {{ lookup('env', 'PWD') }}/django_env/bin/activate"
