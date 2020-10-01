@@ -78,7 +78,7 @@
     - name: execute syncdb
       script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py syncdb"
       args:
-        executable: python
+        executable: "{{ lookup('env', 'PWD') }}/django_env/bin/python2.7"
 
     - name: execute migrate
       script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py migrate"
