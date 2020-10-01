@@ -10,11 +10,11 @@
     - name: pip install virtualenv
       pip:
         name: virtualenv
-        state: latest
         
     - name: create virtual environment django_env
-      shell:
-        cmd: virtualenv django_env
+      shell: "virtualenv django_env"
+      args:
+        executable: /bin/bash      
   
 
     - name: activate django_env virtual environment
