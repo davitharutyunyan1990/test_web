@@ -15,7 +15,7 @@
       shell: "virtualenv django_env"
       args:
         executable: /bin/bash      
-  
+      become: yes
 
     - name: activate django_env virtual environment
       shell: "source {{ lookup('env', 'PWD') }}/django_env/bin/activate"
