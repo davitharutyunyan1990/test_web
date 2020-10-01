@@ -76,14 +76,14 @@
 
     
     - name: execute syncdb
-      script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py syncdb"
+      script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py syncdb --noinput"
       args:
         executable: "{{ lookup('env', 'PWD') }}/django_env/bin/python2.7"
 
     - name: execute migrate
       script: "{{ lookup('env', 'PWD') }}/django/django/notejam/manage.py migrate"
       args:
-        executable: python
+        executable: "{{ lookup('env', 'PWD') }}/django_env/bin/python2.7"
 
 
     - name: Create django_web.service file
