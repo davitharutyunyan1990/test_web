@@ -44,6 +44,7 @@
         path: "{{ lookup('env', 'PWD') }}/django/django/notejam/notejam/settings.py"
         regexp: 'NAME'
         line: "'NAME': 'django_db',"
+      become: yes  
 
     - name: assign USER
       lineinfile:
