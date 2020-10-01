@@ -93,7 +93,8 @@
           After=network.service
           [Service]
           ExecStart="{{ lookup('env', 'PWD')}}/django_env/bin/python  {{ lookup('env', 'PWD') }}/django/django/notejam/manage.py runserver"
-          
+      become: yes 
+    
     - name: Start running the server
       systemd:
         name: django_web.service
